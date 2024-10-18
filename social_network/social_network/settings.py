@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'account',
     'cart',
+    'testapp', # app for test all apps.
 ]
 
 
