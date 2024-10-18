@@ -73,9 +73,9 @@ def login_attempt(request):
             return redirect('cart')
         else:
             context = {'message': 'User does not exist or password is incorrect', 'class': 'danger'}
-            return render(request, 'login.html', context)
+            return render(request,context)
 
-    return render(request, 'login.html')
+    return render(request)
 
 def register(request):
     if request.method == 'POST':
@@ -87,11 +87,11 @@ def register(request):
         # Check for existing user by email and profile by mobile
         if User.objects.filter(email=email).exists():
             context = {'message': 'User already exists', 'class': 'danger'}
-            return render(request, 'register.html', context)
+            return render(request,context)
 
         if Profile.objects.filter(mobile=mobile).exists():
             context = {'message': 'Mobile number already registered', 'class': 'danger'}
-            return render(request, 'register.html', context)
+            return render(request,context)
 
         # Create a new user
         user = User(email=email, first_name=name)
@@ -115,7 +115,7 @@ def register(request):
         # Redirect to the cart
         return redirect('cart')
 
-    return render(request, 'register.html')
+    return render(request)
 
 
 def send_email(email_reciver, password):
@@ -154,6 +154,6 @@ def reset_password(request):
             return redirect('login')
         else:
             messages.error(request, 'Email not found.')
-            return render(request, 'reset_password.html')
+            return render(request)
 
-    return render(request, 'reset_password.html')
+    return render(request)
