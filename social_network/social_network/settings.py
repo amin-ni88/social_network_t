@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'account',
     'cart',
+    'chatroom',
 ]
 
 
@@ -125,3 +126,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#  for sending email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or 'smtp.mail.yahoo.com' for yahoo
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'smth@gmail.com' #  its best to make a gmail with the app name in it.
+EMAIL_HOST_PASSWORD = 'ur app password'  # Ensure this is the app password ,
+#  to get app password u need to go to ur google account and in security enable 2 way verification and search app password and get the app password.
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'

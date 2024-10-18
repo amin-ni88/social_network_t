@@ -33,5 +33,6 @@ urlpatterns = [
     path('reset', views.reset_password , name='reset_password'),
     path('accounts/reset_password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('home/', include('cart.urls')),
+    path('chatroom/', include('chatroom.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
