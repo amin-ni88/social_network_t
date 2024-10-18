@@ -23,15 +23,15 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', views.login_attempt, name='login_attempt'),  # Unique path for login attempt
+    path('api-auth/', include('rest_framework.urls') , name='api-auth'),
+    path('', views.login_attempt, name='login_attempt' , ),  # Unique path for login attempt
     path('register/', views.register, name='register'),
     path('otp/', views.otp, name='otp'),  
     path('sendemail', views.send_email, name='email'),
     path('login/', views.CustomLogoutView.as_view(), name='login'),  # Correct usage  # Ensure this is correctly set up
-    path('accounts/', include('account.urls')),  # Include accounts URLs
-    path('reset', views.reset_password , name='reset_password'),
+    path('accounts/', include('account.urls') , name='accounts'),  # Include accounts URLs
+    path('reset', views.reset_password , name='reset'),
     path('accounts/reset_password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('home/', include('cart.urls')),
+    path('home/', include('cart.urls') , name='home'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
