@@ -1,12 +1,30 @@
 from django.test import TestCase
 from time import time
 from django.shortcuts import reverse
-# Create your tests here.
-
+from account  import models 
+model = models.Profile 
+from django.contrib.auth.models import User
 
 class SocialTesting(TestCase):
     def setUp(self):
-        pass
+        model.objects.create(
+            password= '1234' , 
+            mobile = '09901234567' , 
+            user = User.objects.create(username='test1'),
+            email ='test@gmail.com',
+            otp = '1238' , 
+            bio = 'BIO' , 
+            location = '0.99881323',
+        )
+        model.objects.check(
+            password= '1234' , 
+            mobile = '09901234567' , 
+            user = User.objects.all()[0],
+            email ='test@gmail.com',
+            otp = '1238' , 
+            bio = 'BIO' , 
+            location = '0.99881323',
+        )
     
     def test_status_url(self): # تست صحت صفحه نخست
         request = self.client.get("/")
@@ -27,7 +45,7 @@ class SocialTesting(TestCase):
         request = self.client.get("api-auth/")
         self.assertEqual(request.status_code , 200)
 
-    def test_url_by_name(self):
+    def test_url_by_name(self): # تست اسم url
         requests = self.client.get(reverse("login_attempt"))
         self.assertEqual(requests.status_code , 200)
         
