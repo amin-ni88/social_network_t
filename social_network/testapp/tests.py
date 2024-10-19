@@ -1,5 +1,6 @@
 from django.test import TestCase
 from time import time
+from django.shortcuts import reverse
 # Create your tests here.
 
 
@@ -25,6 +26,11 @@ class SocialTesting(TestCase):
     def test_api_auth_url(self): # تست صحت صفحه api-auth/
         request = self.client.get("api-auth/")
         self.assertEqual(request.status_code , 200)
+
+    def test_url_by_name(self):
+        requests = self.client.get(reverse("login_attempt"))
+        self.assertEqual(requests.status_code , 200)
+        
         
 
     
