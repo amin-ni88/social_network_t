@@ -7,9 +7,9 @@ class SocialTesting(TestCase):
     def setUp(self):
         pass
     
-    # def test_status_url(self): # تست صحت صفحه نخست
-    #     request = self.client.get("/")
-    #     self.assertEqual(request.status_code , 200)
+    def test_status_url(self): # تست صحت صفحه نخست
+        request = self.client.get("/")
+        self.assertEqual(request.status_code , 200)
 
     def test_404(self): # تست خطای 404 در صورت عدم وجود url
         request = self.client.get("ERitrokmM/")
