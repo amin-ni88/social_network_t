@@ -1,6 +1,4 @@
 
-
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 # from phonenumber_field.modelfields import PhoneNumberField
@@ -10,6 +8,8 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 
 from django.conf import settings
+
+# countries_states_cities 
 from countries_states_cities.models import Country, State, City,Region
 # https://pypi.org/project/django-countries-states-cities/ ---->this is countries-states-cities pakage link address
 
