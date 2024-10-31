@@ -4,6 +4,7 @@ from django.shortcuts import reverse
 from account  import models 
 model = models.Profile 
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class SocialTesting(TestCase):
     def setUp(self):
@@ -49,6 +50,23 @@ class SocialTesting(TestCase):
         requests = self.client.get(reverse("login_attempt"))
         self.assertEqual(requests.status_code , 200)
         
-        
 
+    def test_installed_apps(self): # نست افزده بودن اپ ها در لیست INSTALL_APPS
+        apps_to_check = ['rest_framework',
+                         'account',
+                         'cart',
+                         'testapp',
+                         'django.contrib.admin',
+                         'django.contrib.auth',
+                         'django.contrib.contenttypes',
+                         'django.contrib.sessions',
+                         'django.contrib.messages',
+                         'django.contrib.staticfiles',
+                         ]
+        for app in apps_to_check:
+            with self.subTest(app=app):
+                self.assertIn(app, settings.INSTALLED_APPS, f"App '{app}' is not installed")
+
+
+    
     
