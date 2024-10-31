@@ -68,5 +68,21 @@ class SocialTesting(TestCase):
                 self.assertIn(app, settings.INSTALLED_APPS, f"App '{app}' is not installed")
 
 
+    def test_database_settings(self):
+        # بررسی می‌کنیم که بخش DATABASES وجود داشته باشد
+        self.assertIn('default', settings.DATABASES, "DATABASES configuration is missing 'default' entry.")
+        self.assertEqual(
+            settings.DATABASES['default']['ENGINE'],
+            'django.db.backends.sqlite3',
+            "Database ENGINE is not set to 'django.db.backends.sqlite3'"
+        )
+
+        
+        self.assertEqual(
+            settings.DATABASES['default']['NAME'],
+            settings.BASE_DIR / 'db.sqlite3',
+            "Database NAME is not set to 'BASE_DIR / db.sqlite3'"
+        )
+
     
     
