@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,6 +31,22 @@ INSTALLED_APPS = [
     'rest_framework',
     'account',
     'cart',
+    'import_export',
+    'countries_states_cities'
+]
+
+
+
+LANGUAGES = [
+    ("en", "English"),
+    ("ko", "Korean"),
+    ("ja", "Japanese"),
+    ('zh-hans', 'Simplified Chinese'),  # 간체 중국어
+    ('zh-hant', 'Traditional Chinese'),  # 번체 중국어
+    ("es", "Spanish"),
+    ("ru", "Russian"),
+    ("ar", "Arabic"),
+    ('fa','Persian'),
 ]
 
 
